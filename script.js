@@ -98,7 +98,7 @@ subscribeForm.addEventListener('submit', async (event) => {
   }
 
   // Send form data to backend
-  const response = await fetch('/api/subscribe', {
+  const response = await fetch('https://bbwmnbcknd.onrender.com/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
