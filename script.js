@@ -79,6 +79,7 @@
 //   }
 // });
 
+
 // Get form element and add submit event listener
 const subscribeForm = document.getElementById('subscribeForm');
 subscribeForm.addEventListener('submit', async (event) => {
@@ -123,11 +124,65 @@ subscribeForm.addEventListener('submit', async (event) => {
     const successMessage = document.getElementById('successMessage');
     successMessage.textContent = result.message;
     successMessage.classList.remove('hidden'); // Show the success message
+
+  // Redirect to Google form after email has been sent
+    window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSchzWyULH5eyVzqAvT7YnRmJDCLWAiENwDVglFHvtxncBAV4g/viewform";
   } else {
     // Error: show error feedback to user
     console.error('Failed to submit form');
   }
 });
+
+
+// // Get form element and add submit event listener
+// const subscribeForm = document.getElementById('subscribeForm');
+// subscribeForm.addEventListener('submit', async (event) => {
+//   event.preventDefault(); // Prevent default form submission
+
+//   // Get form data
+//   const emailInput = document.getElementById('emailInput');
+//   const email = emailInput.value;
+
+//   // Request permission to show notifications
+//   if (Notification.permission !== 'granted') {
+//     const permission = await Notification.requestPermission();
+//     if (permission !== 'granted') {
+//       console.log('Notification permission denied');
+//       return;
+//     }
+//   }
+
+//   // Send form data to backend
+//   const response = await fetch('https://bbwmnbcknd.onrender.com/api/subscribe', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ email: email })
+//   });
+
+//   // Handle response
+//   if (response.ok) {
+//     // Success: show feedback message to user
+//     const result = await response.json();
+//     console.log(result.message); // Subscription successful
+
+//     // Show notification to the user
+//     if (Notification.permission === "granted") {
+//       const notification = new Notification("Thank you for subscribing!", {
+//         body: "You will now receive our newsletter."
+//       });
+//     }
+
+//     // Display the feedback message to the user, e.g., update DOM with success message
+//     const successMessage = document.getElementById('successMessage');
+//     successMessage.textContent = result.message;
+//     successMessage.classList.remove('hidden'); // Show the success message
+//   } else {
+//     // Error: show error feedback to user
+//     console.error('Failed to submit form');
+//   }
+// });
 
 
 
