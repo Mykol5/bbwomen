@@ -126,7 +126,7 @@ subscribeForm.addEventListener('submit', async (event) => {
     successMessage.classList.remove('hidden'); // Show the success message
 
   // Redirect to Google form after email has been sent
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSchzWyULH5eyVzqAvT7YnRmJDCLWAiENwDVglFHvtxncBAV4g/viewform", "_blank");
+    window.location.replace("https://docs.google.com/forms/d/e/1FAIpQLSchzWyULH5eyVzqAvT7YnRmJDCLWAiENwDVglFHvtxncBAV4g/viewform");
   } else {
     // Error: show error feedback to user
     console.error('Failed to submit form');
