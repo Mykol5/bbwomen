@@ -115,10 +115,19 @@ subscribeForm.addEventListener('submit', async (event) => {
 
     // Show notification to the user
     if (Notification.permission === "granted") {
-      const notification = new Notification("Thank you for subscribing!", {
-        body: "You will now receive our newsletter."
+      navigator.serviceWorker.getRegistration().then(function(reg) {
+        reg.showNotification('Thank you for subscribing!', {
+          body: 'You will now receive our newsletter.'
+        });
       });
     }
+  
+//     // Show notification to the user
+//     if (Notification.permission === "granted") {
+//       const notification = new Notification("Thank you for subscribing!", {
+//         body: "You will now receive our newsletter."
+//       });
+//     }
 
     // Display the feedback message to the user, e.g., update DOM with success message
     const successMessage = document.getElementById('successMessage');
@@ -126,7 +135,7 @@ subscribeForm.addEventListener('submit', async (event) => {
     successMessage.classList.remove('hidden'); // Show the success message
 
   // Redirect to Google form after email has been sent
-    window.location.href("https://docs.google.com/forms/d/e/1FAIpQLSchzWyULH5eyVzqAvT7YnRmJDCLWAiENwDVglFHvtxncBAV4g/viewform");
+    window.location.replace("https://docs.google.com/forms/d/e/1FAIpQLSchzWyULH5eyVzqAvT7YnRmJDCLWAiENwDVglFHvtxncBAV4g/viewform");
   } else {
     // Error: show error feedback to user
     console.error('Failed to submit form');
