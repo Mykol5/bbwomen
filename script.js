@@ -82,9 +82,15 @@
 
 // Get form element and add submit event listener
 const subscribeForm = document.getElementById('subscribeForm');
+const loadingAnimation = document.getElementById('loadingAnimation');
+
 subscribeForm.addEventListener('submit', async (event) => {
   event.preventDefault(); // Prevent default form submission
+  
+  // Show loading animation
+  loadingAnimation.classList.remove('hidden');
 
+  
   // Get form data
   const emailInput = document.getElementById('emailInput');
   const email = emailInput.value;
@@ -106,6 +112,9 @@ subscribeForm.addEventListener('submit', async (event) => {
     },
     body: JSON.stringify({ email: email })
   });
+  
+  // Hide loading animation
+  loadingAnimation.classList.add('hidden');
 
   // Handle response
   if (response.ok) {
